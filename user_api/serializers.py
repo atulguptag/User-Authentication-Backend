@@ -60,14 +60,14 @@ class UserLoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
-        fields = ('username')
+        fields = ('username',)
 
 
 # Password Reset Request Serializer
 class PasswordResetRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = PasswordResetRequest
-        fields = ('email')
+        fields = ('email',)
 
 
 # Password Reset Serializer
