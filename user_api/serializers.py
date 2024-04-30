@@ -1,12 +1,54 @@
-from .models import User
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import get_user_model, authenticate
 from django.core.exceptions import ValidationError
+from .models import Cinema, CinemaHall, CinemaSeat, Movie, Show, Ticket, Log
 
 UserModel = get_user_model()
+
+class CinemaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cinema
+        fields = '__all__'
+
+
+class CinemaHallSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CinemaHall
+        fields = '__all__'
+
+
+class CinemaSeatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CinemaSeat
+        fields = '__all__'
+
+
+class MovieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = '__all__'
+
+
+class ShowSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Show
+        fields = '__all__'
+
+
+class TicketSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ticket
+        fields = '__all__'
+
+
+class LogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Log
+        fields = '__all__'
+
 
 # Register Serializer
 class RegisterSerializer(serializers.ModelSerializer):
