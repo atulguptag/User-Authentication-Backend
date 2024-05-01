@@ -9,23 +9,23 @@ class Cinema(models.Model):
     zip_code = models.CharField(max_length=45, blank=True, null=True)
 
     def __str__(self):
-        return self.cinema_id
+        return str(self.cinema_id)
     
     class Meta:
         db_table = 'cinema'
 
 class CinemaHall(models.Model):
+    cinema_hall_id = models.AutoField(primary_key=True)
     HALL_SIZES = (
         ('S', 'Small'),
         ('M', 'Medium'),
         ('L', 'Large'),
     )
-    cinema_hall_id = models.AutoField(primary_key=True)
     hall_size = models.CharField(max_length=1, choices=HALL_SIZES)
     cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.cinema_hall_id
+        return str(self.cinema_hall_id)
     
     class Meta:
         db_table = 'cinema_hall'
@@ -38,7 +38,7 @@ class CinemaSeat(models.Model):
     col_no = models.CharField(max_length=45)
 
     def __str__(self):
-        return self.cinema_seat_id
+        return str(self.cinema_seat_id)
     
     class Meta:
         db_table = 'cinema_seat'
@@ -71,7 +71,7 @@ class Show(models.Model):
     show_price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return self.show_id
+        return str(self.show_id)
     
     class Meta:
         db_table = 'show'
@@ -85,7 +85,7 @@ class Ticket(models.Model):
     seats = models.CharField(max_length=1000, default="")
 
     def __str__(self):
-        return self.ticket_id
+        return str(self.ticket_id)
     
     class Meta:
         db_table = 'ticket'
