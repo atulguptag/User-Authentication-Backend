@@ -45,19 +45,16 @@ class CinemaSeat(models.Model):
 
 class Movie(models.Model):
     movie_id = models.AutoField(primary_key=True)
-    poster = models.CharField(max_length=45)
-    title = models.CharField(max_length=100, default="Untitled")
-    year = models.PositiveIntegerField(default="2022")
+    poster_link = models.CharField(max_length=200,default="")
+    title = models.CharField(max_length=100, default="")
     genre = models.CharField(max_length=100)
-    date = models.DateTimeField()
-    end_date = models.DateTimeField()
-    actors = models.CharField(max_length=45)
-    name = models.CharField(max_length=45)
-    director = models.CharField(max_length=45)
-    duration = models.CharField(max_length=45)
-    language = models.CharField(max_length=45)
-    about = models.CharField(max_length=1024)
-    score = models.FloatField(null=True, blank=True, default=None)
+    release_date = models.DateTimeField()
+    actors = models.CharField(max_length=1024)
+    director = models.CharField(max_length=100)
+    duration = models.IntegerField() # Duration in minutes
+    language = models.CharField(max_length=100)
+    about = models.TextField()
+    rating = models.FloatField(null=True, blank=True, default=None)
     in_theatre = models.BooleanField(default=True)
 
     def __str__(self):
