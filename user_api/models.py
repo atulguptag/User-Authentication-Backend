@@ -56,6 +56,7 @@ class Movie(models.Model):
     about = models.TextField()
     rating = models.FloatField(null=True, blank=True, default=None)
     in_theatre = models.BooleanField(default=True)
+    current_datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
