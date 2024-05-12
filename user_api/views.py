@@ -10,6 +10,8 @@ from .validations import validate_username, validate_password
 from .models import Cinema, CinemaHall, CinemaSeat, Movie, Show, Ticket, Log
 from .serializers import (CinemaSerializer, CinemaHallSerializer, CinemaSeatSerializer,
                           MovieSerializer, ShowSerializer, TicketSerializer, LogSerializer)
+from django.shortcuts import redirect
+from django.conf import settings
 
 
 class CinemaListCreateAPIView(generics.ListCreateAPIView):
@@ -110,4 +112,4 @@ class LogoutView(APIView):
 
     def post(self, request):
         logout(request)
-        return Response({"success": "Successfully logged out."}, status=status.HTTP_200_OK)
+        return redirect(f"{settings.LOGIN_URL}")
