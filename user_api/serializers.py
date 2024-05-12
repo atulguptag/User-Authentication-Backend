@@ -2,11 +2,9 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError
 from .models import Cinema, CinemaHall, CinemaSeat, Movie, Show, Ticket, Log
-
-UserModel = get_user_model()
 
 class CinemaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -96,5 +94,5 @@ class UserLoginSerializer(serializers.Serializer):
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserModel
+        model = User
         fields = ('username',)
